@@ -1,14 +1,52 @@
-﻿frontend/node_modules/
-frontend/dist/
-backend/venv/
-backend/.env
-frontend/.env
-terraform/.terraform/
-terraform/.terraform.lock.hcl
+﻿# -------------------------
+# FRONTEND (React / Vite)
+# -------------------------
 frontend/node_modules/
 frontend/dist/
-backend/venv/
-backend/.env
 frontend/.env
-terraform/.terraform/
+frontend/.env.local
+frontend/.vite/
+frontend/.next/
+frontend/build/
 
+# -------------------------
+# BACKEND (Python / FastAPI)
+# -------------------------
+backend/venv/
+backend/__pycache__/
+backend/.env
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# -------------------------
+# TERRAFORM
+# -------------------------
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.exe
+
+# -------------------------
+# SYSTEM / OS FILES
+# -------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# -------------------------
+# MISC / EDITOR FILES
+# -------------------------
+*.log
+.vscode/
+.idea/
+*.bak
+*.swp
