@@ -1,8 +1,12 @@
+import asyncio
+from datetime import datetime
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from routes import auth, logs
 
-app = FastAPI(title="Student Progress Tracker API")
+app = FastAPI(title="Employee Progress Tracker API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -16,14 +20,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+async def log_uptime():
+    while True:
+        print(f"Server alive at {datetime.utcnow().isoformat()}")
+        await asyncio.sleep(60)
+
+
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(log_uptime())
+
+
 app.include_router(auth.router)
 app.include_router(logs.router)
 
+
 @app.get("/")
 async def root():
-    return {"message": "Student Progress Tracker API", "status": "running"}
+    return {"message": "Employee Progress Tracker API", "status": "running"}
+
 
 @app.get("/health")
-async def health_check():
-    return {"status": "healthy"}
+async def health():
+    return {"status": "OK", "time": datetime.utcnow().isoformat()}
 

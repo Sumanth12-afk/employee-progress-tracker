@@ -15,6 +15,7 @@ frontend/build/
 backend/venv/
 backend/__pycache__/
 backend/.env
+backend/firebase_key.json
 *.pyc
 *.pyo
 *.pyd
